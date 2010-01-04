@@ -1,0 +1,28 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2915
+
+With the introduction of the autoload directory, plugins were often 
+split into several separate files. The downside is that it isn't always 
+that obvious which files are actually loaded on startup.
+
+This macro creates a CSV file including a list of loaded files during 
+startup and some indicators (number of lines/bytes, timing). You can 
+open this (semicolon-separated) CSV in any spreadsheet application, sort 
+the data etc.
+
+In order to activate the macro, check the value of g:startup_profile_csv 
+in the source code and temporarily insert the following line(s) at the 
+beginning of your |vimrc| file: >
+
+    " Setting g:startup_profile_csv is optional.
+    let g:startup_profile_csv = "..."
+    runtime macros/startup_profile.vim
+
+The list can serve as a starting point for optimizing your startup time, 
+e.g. by delaying certain calls to functions in autoload files or by 
+making use of the AsNeeded (vimscript #915) or the tplugin (vimscript #2917) 
+plugins.
+
+Depending on your system configuration and the speed of your hard drive, 
+seeking for files or, e.g., creating menu entries may prove to be costly 
+with respect to startup time.
+
